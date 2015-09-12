@@ -24,12 +24,12 @@ print ("A random word has been chosen from wordlist and stored in the string var
 
 # end of helper code. 
 # --------------------------------------------------------------------------
-###################
-## Jimmy Wallace ##
-## Project One   ##
-## Help From:    ##
-## 9/8/2015      ##
-###################
+##Jimmy Wallace
+##9/8/15
+##Project One
+##Help From: Dad
+
+DEBUG = True
 
 def create_blanks(secret_word):
     '''creates blanks '_' for secret word'''
@@ -59,13 +59,13 @@ def track_progress(guess, secret_word, progress):
     progress = new_progress
     return progress
     
-def rem_letters(remaining_letters, guess):
+def rem_letters(all_letters, guess):
     '''displays remaining letters'''
     remaining_letters = remaining_letters.replace(guess, '')
     return remaining_letters
 
 wrong_guesses = 0
-blanks = create_blanks
+
 
 print('Welcome to the Politically Correct Word Guessing Game!')
 print()
@@ -73,7 +73,10 @@ print('I am thinking of a random word')
 
 
 while wrong_guesses <= 8:
-    create_blanks(secret_word)
-    print(blanks)
-    #progress = create_blanks
-    
+    print(create_blanks(secret_word))
+    if DEBUG == True:
+        print(secret_word)
+    #print('Unused letters:',rem_letters(all_letters, guess))
+    guess = input('Guess a letter! : ')
+    print(check_guess(guess, secret_word))
+    print(track_progress(guess, secret_word, progress))
